@@ -6,17 +6,30 @@ from db_scripts import *
 app = Flask(__name__)
 
 
+def get_default_user():
+    user = get_user()
+    if user:
+        return user
+
+    return {
+        'name': 'Гість',
+        'image': 'petrik.png',
+        'description_short': 'Профіль ще не заповнений.',
+        'description': 'Додайте запис користувача в таблицю users, щоб показувати ваш профіль.'
+    }
+
+
 @app.route('/')
 @app.route('/index')
 def index():
-    user = get_user()
+    user = get_default_user()
 
     return render_template('index.html', user=user)
 
 
 @app.route('/about')
 def about():
-    user = get_user()
+    user = get_default_user()
 
     return render_template('about.html', user=user)
 
