@@ -1,0 +1,26 @@
+.avatar-small {
+    width: 120px;
+} 
+
+.avatar-big {
+    width: 350px;
+} 
+
+.post-image-small {
+    width: 120px;
+} 
+
+.post-image-big {
+    width: 350px;
+} 
+
+
+.banner {
+    height: 500px;
+    width: 100%;
+}
+
+.banner img {
+    height: 500px;          
+    object-fit: cover;     
+}

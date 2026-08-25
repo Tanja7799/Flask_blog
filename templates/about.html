@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+
+<h2>{{ user.name }}</h2>
+
+<img class="avatar-big" src="{{ url_for('static', filename='images/' + user.image) }}" alt="Фото">
+
+<p>
+    <b>{{ user.description_short }}</b>
+</p>
+<p>
+    {{ user.description }}
+</p>
+
+{% endblock %}
+

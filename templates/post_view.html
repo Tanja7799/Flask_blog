@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body %}
+<section class="py-4">
+    <div class="mb-3">
+        <a href="javascript:history.back()" class="btn btn-outline-secondary btn-sm">
+            ← Назад
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            {% if category %}
+                <div class="mb-2 text-muted">
+                    Категорія: {{ category['category_name'] }}
+                </div>
+            {% endif %}
+
+            {% if post['image'] %}
+                <img src="/static/uploads/{{post['image']}}" class="img-thumbnail post-image-big d-block" alt="...">
+            {% endif %}
+
+            <h1 class="card-title h3 mb-4">Пост</h1>
+
+            <div class="card-text fs-5">
+                {{ post['text'] }}
+            </div>
+        </div>
+
+        <div class="card-footer text-muted">
+            {{ post['datetime'] }}
+            | <a class="x-lg" href="/post/delete/{{post['post_id']}}/{{category['category_name']}}" onclick="return confirm('Видалити пост?')">Видалити</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

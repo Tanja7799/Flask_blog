@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block body %}
+<h2 class="my-4 ms-3">
+  Пости категорії 
+  {% if category['category_name'] == 'gamedev' %} Gamedev
+  {% elif category['category_name'] == 'web' %} Web
+  {% elif category['category_name'] == 'personal' %} Особисте
+  {% endif %}
+</h2>
+
+<section>
+    <div>
+      {% for post in posts %}
+      <div class="card my-4">
+        <div class="card-body">
+          {% if post['image'] %}
+          <img src="/static/uploads/{{post['image']}}" class="img-thumbnail post-image-small d-block" alt="..."><br>
+          {% endif %}
+          <h5 class="card-title">
+            {{ post['title'] }}
+          </h5>
+          <p class="card-text"> {{ post['text']|truncate(100, True, '...') }}</p>
+              
+          <a href="/post/view/{{ post['post_id'] }}" class="btn btn-sm btn-outline-primary mt-2">
+          Читати далі →
+          </a>
+        </div>
+        <div class="card-footer">
+              <i class="bi-alarm" style="font-size: 1rem; color: cornflowerblue;"></i> {{post['datetime']}} 
+              | <a class="x-lg" href="/post/delete/{{post['post_id']}}/{{category['category_name']}}" onclick="return confirm('Видалити пост?')">Видалити</a>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% include "errors.html" %}
+    <div class="card mt-5"> 
+      <div class="card-body">
+        <h3 class="card-title">Додавання посту</h3>
+        <hr>
+        <form method="POST" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="title" class="form-label">Заголовок</label>
+            <input type="text" name="title" id="title" class="form-control" value="{{request.form['title']}}">
+          </div>
+          <div class="mb-3">
+            <label for="title" class="form-label">Картинка</label>
+            <input type="file" name="image" id="image" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label for="post" class="form-label">Текст</label>
+            <textarea name="post" id="post" class="form-control">{{request.form['post']}}</textarea><br>
+          </div> 
+          <div class="mb-3">
+            <input type="submit" class="btn btn-primary btn-lg" value="Відправити">
+          </div>
+        </form>
+      </div>
+    </div>
+</section>
+{% endblock %}

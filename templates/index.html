@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% include "banner.html" %}
+
+{% block body %}
+
+<h2 class="mb-4">Це мій блог</h2>
+
+<div сlass="card text-center"> 
+    <a href="/about" class="text-decoration-none text-dark">   
+        <div class="card-body">
+            <img class="avatar-small rounded-circle mb-2" src="{{ url_for('static', filename='images/' + user.image) }}" alt="Фото">
+            <p class="mb-1">
+                <b>{{ user.name }}</b>
+            </p>
+            <p class="mb-4">
+                {{ user.description_short }}
+            </p>
+        </div>
+    </a>
+</div>
+
+<p>
+    Це мій особистий блог про проєкти, програмування та інші захоплення.<br>
+    У категоріях Gamedev та WEB зібрані мої досягнення та практичні результати.<br>
+    Оберіть категорію або перегляньте останні пости.
+</p>
+
+{% endblock %}
