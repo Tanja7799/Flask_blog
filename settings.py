@@ -11,4 +11,4 @@ PATH_STATIC = PATH + 'static' + os.sep
 PATH_UPLOADS = PATH_STATIC + 'uploads' + os.sep
 
 # Секретний ключ
-SECRET_KEY = 'VeryStrongKey'
+SECRET_KEY = 'X9#mK2@pL7!qR4$nT8&wY1^vZ3*'
